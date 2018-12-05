@@ -150,6 +150,8 @@ if __name__ == "__main__":
             next_position[1] -= 1
         elif move == 'D':
             next_position[1] += 1
+        elif move == 'Q':
+            exit("Vous avez demandez à quitter le jeu. Adieu")
         else:
             print('Move not understood, try again.')
             continue
