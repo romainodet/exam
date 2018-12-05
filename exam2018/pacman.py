@@ -11,7 +11,7 @@ game_map = """
 #.## #. .#
 #.##.#.  #
 #. . .X .#
-# . .  . .
+# . .  . #
 ##########
 """
 
@@ -64,7 +64,11 @@ def get_map_index(position):
 # return the character in the game_map at given coordinates
 def get_case_content(position):
     # TODO check if position goes outside of the map, return None in that case
-    return game_map[get_map_index(position)]
+    global height, width
+    if position[1] > height or position[0] > width or position[0] < 0 or position[1] < 0:
+        return None
+    else:
+        return game_map[get_map_index(position)]
 
 
 # remove a gum of the map
@@ -158,6 +162,10 @@ if __name__ == "__main__":
 
         # Depending of the content of the case, move PACMAN and take required actions
         case = get_case_content(next_position)
+        print(case)
+        print(width)
+        print(height)
+        print(pacman_position)
         if case == WALL:
             print(red_text('Vous enterred a wall, try again'))
         elif case == ENNEMY:
