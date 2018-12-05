@@ -115,13 +115,20 @@ def move_pacman(current_position, next_position):
 # display the map, with fancy colors !
 def show_map(map):
     # for each char of the map
+    global invincible
     for char in map:
         if char == WALL:
             print(char, end='')
         elif char == ENNEMY:
-            print(red_text(char), end='')
+            if invincible == 1:
+                print(pink_text(char), end='')
+            else:
+                print(red_text(char), end='')
         elif char == PACMAN:
-            print(green_text(char), end='')
+            if invincible == 1:
+                print(blue_text(char), end='')
+            else:
+                print(green_text(char), end='')
         elif char == GUM:
             print(pink_text(char), end='')
         else:

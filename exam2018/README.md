@@ -68,7 +68,7 @@ Avant de commencer les fonctionnalités modérées et avancés, vous **devez** i
 
 ## Fonctionnalités modérés (4 pt)
 
-- M1. Quand PACMAN mange une super-gomme il devient bleu et les ennemis deviennent rose
+- ~~M1. Quand PACMAN mange une super-gomme il devient bleu et les ennemis deviennent rose~~
 - M2. Gérer un nouveau type de case `B`, quand PACMAN passe dessus, il peut manger les murs (et donc passer à travers !)
   * INDICE => Attention cela ne concerne que PACMAN, pas les ennemis
 - M3. Après chaque déplacement de PACMAN, l'ennemi se déplace aléatoirement (sans passer a travers les murs!)
