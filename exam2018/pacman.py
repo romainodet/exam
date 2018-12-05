@@ -19,7 +19,7 @@ game_map = """
 .C ..o. .#
 #.## #. .#
 #.##.#.  #
-#. . .X .#
+#.B. .X .#
 # . .  . #
 ##########
 """
@@ -31,6 +31,7 @@ WALL = '#'
 SUPERGUM = 'o'
 GUM = '.'
 EMPTY = ' '
+EAT_WALL = 'B'
 
 # Compute width and height of the map
 width = len(game_map.split('\n')[1])
@@ -180,6 +181,8 @@ if __name__ == "__main__":
     total_gum = count_number_of_gum()
     invincible = 0
     enemy_counter = 0
+    b_case = 0
+    number_of_wall_eaten = 0
 
     while True:
         # Display the game map (this is what "slow refresh game' implies)
@@ -216,10 +219,17 @@ if __name__ == "__main__":
         # Depending of the content of the case, move PACMAN and take required actions
         case = get_case_content(next_position)
         if case == WALL:
-            print(red_text('Vous enterred a wall, try again'))
+            if B_case == 1:
+                print(blue_text('Slurp! A wall'))
+                # update PACMAN position
+                move_pacman(pacman_position, next_position)
+                pacman_position = list(next_position)
+                number_of_wall_eaten += 1
+            else:
+                print(red_text('Vous enterred a wall, try again'))
         elif case == ENNEMY:
             if invincible == 1:
-                print(pink_text("Slurp! It's delicious!"))
+                print(pink_text("Slurp! This monster is delicious!"))
                 enemy_counter += 1
                 # update PACMAN position
                 move_pacman(pacman_position, next_position)
@@ -245,6 +255,12 @@ if __name__ == "__main__":
             # update PACMAN position
             move_pacman(pacman_position, next_position)
             pacman_position = list(next_position)
+        elif case == EAT_WALL:
+            print(blue_text("YOU CAN EAT THE WALLS!"))
+            # update PACMAN position
+            move_pacman(pacman_position, next_position)
+            pacman_position = list(next_position)
+            B_case = 1
         elif case == None:
             print(red_text('You went outside of the map, stupid !'))
         else:
