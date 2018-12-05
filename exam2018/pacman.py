@@ -5,14 +5,13 @@
 
 # The game map, as a large string
 # Be careful not to include useless spaces on the right when you modify the map !
+
+
 game_map = """
-##########
-.C ..o. .#
-#.## #. .#
-#.##.#.  #
-#. . .X .#
-# . .  . #
-##########
+#####
+#C..#
+# ..#
+#####
 """
 
 # Definition of each component of the map
@@ -134,10 +133,19 @@ def begin_of_the_program():
 
 def end_of_the_program():
     global count_gum
+    print(green_text("Bravo!"), "vous avez gagné!")
     if count_gum <= 1:
-        print("Vous avez attraper", count_gum, "gomme")
+        print("Vous avez attrapé", count_gum, "gomme")
     else:
-        print("Vous avez attraper", count_gum, "gommes")
+        print("Vous avez attrapé", count_gum, "gommes")
+
+
+def count_number_of_gum():
+    global game_map
+
+    game_map_list = list(game_map)
+    total = game_map_list.count('.')
+    return total
 
 # Program starts here !
 if __name__ == "__main__":
@@ -147,7 +155,7 @@ if __name__ == "__main__":
     pacman_position = [1, 1]
     enemy_position = [6, 4]
     count_gum = 0
-
+    total_gum = count_number_of_gum()
     while True:
         # Display the game map (this is what "slow refresh game' implies)
         show_map(game_map)
@@ -173,6 +181,9 @@ if __name__ == "__main__":
             print('Move not understood, try again.')
             continue
 
+        if count_gum == total_gum:
+            end_of_the_program()
+            exit("Fin Du Jeu")
         # Depending of the content of the case, move PACMAN and take required actions
         case = get_case_content(next_position)
         if case == WALL:
@@ -202,8 +213,5 @@ if __name__ == "__main__":
             print(red_text('You went outside of the map, stupid !'))
         else:
             print(debug_text('Something went wrong !!'))
-
-        end_of_the_program()
-        # TODO Check is game is finished, in that case display some messages
 
         # TODO Make the ennemy move
