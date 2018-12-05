@@ -3,6 +3,7 @@
 ### License : GPL
 ###
 import random, time
+
 # The game map, as a large string
 # Be careful not to include useless spaces on the right when you modify the map !
 
@@ -30,6 +31,7 @@ EAT_WALL = 'B'
 width = len(game_map.split('\n')[1])
 # we need to subtract 2 because of the newline at beginning and the newline at the end of the string
 height = len(game_map.split('\n')) - 2
+
 
 # Generate a red colored text
 def red_text(txt):
@@ -105,6 +107,7 @@ def move_pacman(current_position, next_position):
 
     # print(debug_text('we are now moving PACMAN'))
 
+
 # move pacman at new position in the map
 def move_monster(current_position, next_position):
     # use this line to modify the game_map global variable in the function
@@ -118,7 +121,8 @@ def move_monster(current_position, next_position):
     game_map_list[get_map_index(next_position)] = ENNEMY
     game_map = "".join(game_map_list)
 
-    #print(debug_text('we are now moving ENNEMY'))
+    # print(debug_text('we are now moving ENNEMY'))
+
 
 # display the map, with fancy colors !
 def show_map(map):
@@ -171,12 +175,14 @@ def end_of_the_program():
             print("Vous avez mangé", enemy_counter, "ennemis")
     print("Le temps passé à manger des gums est de", red_text(str(round(end - start))), "secondes")
 
+
 def count_number_of_gum():
     global game_map
 
     game_map_list = list(game_map)
     total = game_map_list.count('.')
     return total
+
 
 # Program starts here !
 if __name__ == "__main__":
