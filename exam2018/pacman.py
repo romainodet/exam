@@ -113,7 +113,7 @@ def show_map(map):
 
 # Program starts here !
 if __name__ == "__main__":
-
+    print(green_text("Bienvenue dans PACMAN édition ligne de commande !"))
     # Inital positions of PACMAN and ennemy
     pacman_position = [1, 1]
     enemy_position = [6, 4]
