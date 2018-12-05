@@ -6,12 +6,13 @@
 # The game map, as a large string
 # Be careful not to include useless spaces on the right when you modify the map !
 game_map = """
-########
-.C ..o #
-#.## # #
-#.##.# #
-#. . .X#
-########
+##########
+.C ..oX .#
+#.## #. .#
+#.##.#.  #
+#. . .X .#
+# . .  . .
+##########
 """
 
 # Definition of each component of the map
