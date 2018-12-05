@@ -2,8 +2,7 @@
 ### Author : Antoine Scherrer <antoine.scherrer@lecole-ldlc.com>
 ### License : GPL
 ###
-import random
-
+import random, time
 # The game map, as a large string
 # Be careful not to include useless spaces on the right when you modify the map !
 
@@ -113,7 +112,6 @@ def move_pacman(current_position, next_position):
 
     # print(debug_text('we are now moving PACMAN'))
 
-
 # move pacman at new position in the map
 def move_monster(current_position, next_position):
     # use this line to modify the game_map global variable in the function
@@ -127,7 +125,7 @@ def move_monster(current_position, next_position):
     game_map_list[get_map_index(next_position)] = ENNEMY
     game_map = "".join(game_map_list)
 
-    # print(debug_text('we are now moving ENNEMY'))
+    #print(debug_text('we are now moving ENNEMY'))
 
 # display the map, with fancy colors !
 def show_map(map):
@@ -166,7 +164,8 @@ def begin_of_the_program():
 
 
 def end_of_the_program():
-    global count_gum, enemy_counter
+    global count_gum, enemy_counter, start
+    end = time.time()
     print(green_text("Bravo!"), "vous avez gagné!")
     if count_gum <= 1:
         print("Vous avez attrapé", count_gum, "gomme")
@@ -177,7 +176,7 @@ def end_of_the_program():
             print("Vous avez mangé", enemy_counter, "ennemi")
         else:
             print("Vous avez mangé", enemy_counter, "ennemis")
-
+    print("Le temps passé à manger des gums est de", red_text(str(round(end - start))), "secondes")
 
 def count_number_of_gum():
     global game_map
@@ -201,6 +200,7 @@ if __name__ == "__main__":
     number_of_wall_eaten = 0
 
     while True:
+        start = time.time()
         # Display the game map (this is what "slow refresh game' implies)
         show_map(game_map)
 
@@ -225,6 +225,19 @@ if __name__ == "__main__":
             next_position[1] += 1
         elif move == 'Q':
             exit("Vous avez demandez à quitter le jeu. Adieu")
+        elif move == "?":
+            mid = time.time()
+            if count_gum <= 1:
+                print("Vous avez attrapé", count_gum, "gomme")
+            else:
+                print("Vous avez attrapé", count_gum, "gommes")
+            if enemy_counter > 0:
+                if enemy_counter == 1:
+                    print("Vous avez mangé", enemy_counter, "ennemi")
+                else:
+                    print("Vous avez mangé", enemy_counter, "ennemis")
+            print("Le temps actuel passé à manger des gums est de", red_text(str(round(mid - start))), "secondes")
+            continue
         else:
             print('Move not understood, try again.')
             continue

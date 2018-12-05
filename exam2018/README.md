@@ -64,7 +64,8 @@ Avant de commencer les fonctionnalités modérées et avancés, vous **devez** i
 - ~~E9. Quand PACMAN mange une super-gomme, il devient invincible et il peut manger les ennemis.~~
   * ~~INDICE => C'est très similaire à quand PACMAN mange les pac-gommes !~~
 - ~~E10. Afficher le nombre d'ennemi mangés en fin de partie.~~
-- E11. _votre fonctionnalité ici_
+- E11. Je ne sais pas où le placer donc : 
+    - ~~Chronométrage, et fonction info ? qui affiche le nombre de gum mangé, de monstre et le temps écoulé~~
 
 ## Fonctionnalités modérés (4 pt)
 
@@ -72,10 +73,10 @@ Avant de commencer les fonctionnalités modérées et avancés, vous **devez** i
 - ~~M2. Gérer un nouveau type de case `B`, quand PACMAN passe dessus, il peut manger les murs (et donc passer à travers !)~~
   * ~~INDICE => Attention cela ne concerne que PACMAN, pas les ennemis~~
 - ~~M3. Après chaque déplacement de PACMAN, l'ennemi se déplace aléatoirement (sans passer a travers les murs!)~~
-  * INDICES => L'ennemi se déplace dans une des directions principales (haut, bas, gauche ou droite).
-  * INDICES => Dans un premier temps, l'ennemi va manger aussi les gommes, super-gommes et autre bonus, tant pis !
-  * INDICES => L'ennemi peut, bien entendu, manger PACMAN et alors le joueur perd !
-  * INDICES => Attention à ne plus faire bouger l'ennemi quand PACMAN l'a mangé !
+  * ~~INDICES => L'ennemi se déplace dans une des directions principales (haut, bas, gauche ou droite).~~
+  * ~~INDICES => Dans un premier temps, l'ennemi va manger aussi les gommes, super-gommes et autre bonus, tant pis !~~
+  * ~~INDICES => L'ennemi peut, bien entendu, manger PACMAN et alors le joueur perd !~~
+  * ~~INDICES => Attention à ne plus faire bouger l'ennemi quand PACMAN l'a mangé !~~
 - M4. _votre fonctionnalité ici_
 
 ## Fonctionnalités avancées (6 pt)
