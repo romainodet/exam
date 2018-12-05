@@ -61,9 +61,9 @@ Avant de commencer les fonctionnalités modérées et avancés, vous **devez** i
 - ~~E7. Afficher le nombre de pac-gomme mangées en fin de jeu.~~
 - ~~E8. Implémenter la fin "PACMAN gagne"~~ 
   * ~~INDICE => Compter le nombre de '.' dans le niveau, si PACMAN a mangé ce nombre de pac-gomme il a gagné !~~
-- E9. Quand PACMAN mange une super-gomme, il devient invincible et il peut manger les ennemis.
-  * INDICE => C'est très similaire à quand PACMAN mange les pac-gommes !
-- E10. Afficher le nombre d'ennemi mangés en fin de partie.
+- ~~E9. Quand PACMAN mange une super-gomme, il devient invincible et il peut manger les ennemis.~~
+  * ~~INDICE => C'est très similaire à quand PACMAN mange les pac-gommes !~~
+- ~~E10. Afficher le nombre d'ennemi mangés en fin de partie.~~
 - E11. _votre fonctionnalité ici_
 
 ## Fonctionnalités modérés (4 pt)

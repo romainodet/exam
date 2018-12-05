@@ -7,11 +7,21 @@
 # Be careful not to include useless spaces on the right when you modify the map !
 
 
-game_map = """
+"""game_map = """
 #####
 #C..#
 # ..#
 #####
+""""""
+
+game_map = """
+##########
+.C ..o. .#
+#.## #. .#
+#.##.#.  #
+#. . .X .#
+# . .  . #
+##########
 """
 
 # Definition of each component of the map
@@ -132,12 +142,17 @@ def begin_of_the_program():
 
 
 def end_of_the_program():
-    global count_gum
+    global count_gum, enemy_counter
     print(green_text("Bravo!"), "vous avez gagné!")
     if count_gum <= 1:
         print("Vous avez attrapé", count_gum, "gomme")
     else:
         print("Vous avez attrapé", count_gum, "gommes")
+    if enemy_counter > 0:
+        if enemy_counter == 1:
+            print("Vous avez mangé", enemy_counter, "ennemi")
+        else:
+            print("Vous avez mangé", enemy_counter, "ennemis")
 
 
 def count_number_of_gum():
@@ -156,13 +171,20 @@ if __name__ == "__main__":
     enemy_position = [6, 4]
     count_gum = 0
     total_gum = count_number_of_gum()
+    invincible = 0
+    enemy_counter = 0
+
     while True:
         # Display the game map (this is what "slow refresh game' implies)
         show_map(game_map)
 
         # Ask the user where he wants to go
         # convert user input to uppercase
-        move = input('Votre déplacement ?').upper()
+        try:
+            move = input('Votre déplacement ?').upper()
+
+        except:
+            print("Une erreur c'est malheuresement produite.")
 
         # We copy pacman_position in next_position
         next_position = list(pacman_position)
@@ -189,8 +211,15 @@ if __name__ == "__main__":
         if case == WALL:
             print(red_text('Vous enterred a wall, try again'))
         elif case == ENNEMY:
-            print(red_text('ENNEMY THERE => YOU DIE // GAME OVER'))
-            break
+            if invincible == 1:
+                print(pink_text("Slurp! It's delicious!"))
+                enemy_counter += 1
+                # update PACMAN position
+                move_pacman(pacman_position, next_position)
+                pacman_position = list(next_position)
+            else:
+                print(red_text('ENNEMY THERE => YOU DIE // GAME OVER'))
+                break
         elif case == GUM:
             print(green_text('Yummy !'))
             remove_gum_from_map(next_position)
@@ -199,8 +228,8 @@ if __name__ == "__main__":
             pacman_position = list(next_position)
             count_gum += 1
         elif case == SUPERGUM:
-            # TODO Deal with SUPERGUM effect
             print(pink_text('You are now invincible'))
+            invincible = 1
             # update PACMAN position
             move_pacman(pacman_position, next_position)
             pacman_position = list(next_position)
