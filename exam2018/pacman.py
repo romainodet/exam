@@ -2,6 +2,7 @@
 ### Author : Antoine Scherrer <antoine.scherrer@lecole-ldlc.com>
 ### License : GPL
 ###
+import random
 
 # The game map, as a large string
 # Be careful not to include useless spaces on the right when you modify the map !
@@ -110,8 +111,23 @@ def move_pacman(current_position, next_position):
     game_map_list[get_map_index(next_position)] = PACMAN
     game_map = "".join(game_map_list)
 
-    print(debug_text('we are now moving PACMAN'))
+    # print(debug_text('we are now moving PACMAN'))
 
+
+# move pacman at new position in the map
+def move_monster(current_position, next_position):
+    # use this line to modify the game_map global variable in the function
+    global game_map
+
+    # convert the map into a list (so that we can change a character !)
+    game_map_list = list(game_map)
+    # remove the gum (put the empty char at the position of the gum)
+    game_map_list[get_map_index(current_position)] = EMPTY
+    # convert the list back to a string, that will be the updated game map
+    game_map_list[get_map_index(next_position)] = ENNEMY
+    game_map = "".join(game_map_list)
+
+    # print(debug_text('we are now moving ENNEMY'))
 
 # display the map, with fancy colors !
 def show_map(map):
@@ -181,7 +197,7 @@ if __name__ == "__main__":
     total_gum = count_number_of_gum()
     invincible = 0
     enemy_counter = 0
-    b_case = 0
+    B_case = 0
     number_of_wall_eaten = 0
 
     while True:
@@ -216,6 +232,60 @@ if __name__ == "__main__":
         if count_gum == total_gum:
             end_of_the_program()
             exit("Fin Du Jeu")
+
+        # monster random direction
+        if enemy_counter == 0:
+            ok = 0
+            while ok != 1:
+                next_position_monster = list(enemy_position)
+                direction = random.choice("LRDU")
+
+                if direction == 'L' or direction == 'G':
+                    next_position_monster[0] -= 1
+                elif direction == 'R':
+                    next_position_monster[0] += 1
+                elif direction == 'U':
+                    next_position_monster[1] -= 1
+                elif direction == 'D':
+                    next_position_monster[1] += 1
+                else:
+                    print('direction not understood, try again.')
+                    continue
+
+                case_monster = get_case_content(next_position_monster)
+                if case_monster == WALL:
+                    continue
+                elif case_monster == ENNEMY:
+                    continue
+                elif case_monster == GUM:
+                    remove_gum_from_map(next_position_monster)
+                    # update PACMAN position
+                    move_monster(enemy_position, next_position_monster)
+                    enemy_position = list(next_position_monster)
+                    ok = 1
+                elif case_monster == SUPERGUM:
+                    move_monster(enemy_position, next_position_monster)
+                    enemy_position = list(next_position_monster)
+                    ok = 1
+                elif case_monster == EMPTY:
+                    # update PACMAN position
+                    move_monster(enemy_position, next_position_monster)
+                    enemy_position = list(next_position_monster)
+                    ok = 1
+                elif case_monster == EAT_WALL:
+                    # update PACMAN position
+                    move_monster(enemy_position, next_position_monster)
+                    enemy_position = list(next_position_monster)
+                    ok = 1
+                elif case_monster == PACMAN:
+                    print(red_text('ENNEMY EAT YOU ==> GAME OVER'))
+                    ok = 1
+                    break
+                elif case_monster == None:
+                    continue
+                else:
+                    print(debug_text('Something went wrong !!'))
+
         # Depending of the content of the case, move PACMAN and take required actions
         case = get_case_content(next_position)
         if case == WALL:
@@ -265,5 +335,3 @@ if __name__ == "__main__":
             print(red_text('You went outside of the map, stupid !'))
         else:
             print(debug_text('Something went wrong !!'))
-
-        # TODO Make the ennemy move
