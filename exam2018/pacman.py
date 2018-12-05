@@ -7,13 +7,6 @@ import random, time
 # Be careful not to include useless spaces on the right when you modify the map !
 
 
-"""game_map = """
-#####
-#C..#
-# ..#
-#####
-""""""
-
 game_map = """
 ##########
 .C ..o. .#
