@@ -53,7 +53,7 @@ Avant de commencer les fonctionnalités modérées et avancés, vous **devez** i
 
 - ~~E1. Afficher un message en **vert** au début de votre programme.~~
 - ~~E2. Changer le niveau (ne mettez pas trop de gommes pour que vos tests ne soient pas trop longs !).~~
-- E3. Demander son age au joueur, si il a moins de 12 ans quitter, sinon continuer.
+- ~~E3. Demander son age au joueur, si il a moins de 12 ans quitter, sinon continuer.~~
 - E4. L'utilisateur peut quitter le jeu en tapant 'q' ou 'Q' comme déplacement.
 - E5. Vérifier, dans la fonction 'get_case_content' que la position donnée ne sort pas du niveau, si cela sort, retourner `None`.
 - E6. Compléter la fonction `move_pacman` de sorte que PACMAN se déplace vraiment.

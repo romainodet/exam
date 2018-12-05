@@ -28,7 +28,6 @@ width = len(game_map.split('\n')[1])
 # we need to subtract 2 because of the newline at beginning and the newline at the end of the string
 height = len(game_map.split('\n')) - 2
 
-
 # Generate a red colored text
 def red_text(txt):
     return '\033[31;1m' + txt + '\033[0m'
@@ -112,8 +111,21 @@ def show_map(map):
             print(char, end='')
 
 
+def begin_of_the_program():
+    AgeOfThePlayer = 0
+    try:
+
+        AgeOfThePlayer = int(input("Quel est ton age ? : "))
+
+    except:
+        print(red_text("ERREUR : AGE INCORRECT"))
+
+    if AgeOfThePlayer < 12:
+        exit("Vous etes trop jeune.")
+
 # Program starts here !
 if __name__ == "__main__":
+    begin_of_the_program()
     print(green_text("Bienvenue dans PACMAN édition ligne de commande !"))
     # Inital positions of PACMAN and ennemy
     pacman_position = [1, 1]
