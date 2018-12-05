@@ -55,12 +55,12 @@ Avant de commencer les fonctionnalités modérées et avancés, vous **devez** i
 - ~~E2. Changer le niveau (ne mettez pas trop de gommes pour que vos tests ne soient pas trop longs !).~~
 - ~~E3. Demander son age au joueur, si il a moins de 12 ans quitter, sinon continuer.~~
 - ~~E4. L'utilisateur peut quitter le jeu en tapant 'q' ou 'Q' comme déplacement.~~
-- E5. Vérifier, dans la fonction 'get_case_content' que la position donnée ne sort pas du niveau, si cela sort, retourner `None`.
-- E6. Compléter la fonction `move_pacman` de sorte que PACMAN se déplace vraiment.
-  * INDICE => Cette fonction est très similaire à la fonction  `remove_gum_from_map`
+- ~~E5. Vérifier, dans la fonction 'get_case_content' que la position donnée ne sort pas du niveau, si cela sort, retourner `None`.~~
+- ~~E6. Compléter la fonction `move_pacman` de sorte que PACMAN se déplace vraiment.
+  * INDICE => Cette fonction est très similaire à la fonction  `remove_gum_from_map`~~
 - E7. Afficher le nombre de pac-gomme mangées en fin de jeu.
 - E8. Implémenter la fin "PACMAN gagne" 
-  * INDICE => Compter le nombre de '.' dans le niveau, si PACMAN a mangé ce nombre de pac-gomme il a gagné !
+  * INDICE => Compter le nomb~~~~re de '.' dans le niveau, si PACMAN a mangé ce nombre de pac-gomme il a gagné !
 - E9. Quand PACMAN mange une super-gomme, il devient invincible et il peut manger les ennemis.
   * INDICE => C'est très similaire à quand PACMAN mange les pac-gommes !
 - E10. Afficher le nombre d'ennemi mangés en fin de partie.

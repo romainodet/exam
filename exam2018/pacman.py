@@ -96,6 +96,15 @@ def move_pacman(current_position, next_position):
     # You will need the two parameters of the function
     # current_position is PACMAN's current position in the map
     # next_position is PACMAN's next position (after move)
+
+    # convert the map into a list (so that we can change a character !)
+    game_map_list = list(game_map)
+    # remove the gum (put the empty char at the position of the gum)
+    game_map_list[get_map_index(current_position)] = EMPTY
+    # convert the list back to a string, that will be the updated game map
+    game_map_list[get_map_index(next_position)] = PACMAN
+    game_map = "".join(game_map_list)
+
     print(debug_text('we are now moving PACMAN'))
 
 
@@ -146,7 +155,7 @@ if __name__ == "__main__":
         # We copy pacman_position in next_position
         next_position = list(pacman_position)
         # Update next_position
-        if move == 'L':
+        if move == 'L' or move == 'G':
             next_position[0] -= 1
         elif move == 'R':
             next_position[0] += 1
@@ -162,10 +171,6 @@ if __name__ == "__main__":
 
         # Depending of the content of the case, move PACMAN and take required actions
         case = get_case_content(next_position)
-        print(case)
-        print(width)
-        print(height)
-        print(pacman_position)
         if case == WALL:
             print(red_text('Vous enterred a wall, try again'))
         elif case == ENNEMY:
