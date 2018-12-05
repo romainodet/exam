@@ -7,7 +7,7 @@
 # Be careful not to include useless spaces on the right when you modify the map !
 game_map = """
 ##########
-.C ..oX .#
+.C ..o. .#
 #.## #. .#
 #.##.#.  #
 #. . .X .#
@@ -63,7 +63,6 @@ def get_map_index(position):
 
 # return the character in the game_map at given coordinates
 def get_case_content(position):
-    # TODO check if position goes outside of the map, return None in that case
     global height, width
     if position[1] > height or position[0] > width or position[0] < 0 or position[1] < 0:
         return None
@@ -92,10 +91,6 @@ def remove_gum_from_map(position):
 def move_pacman(current_position, next_position):
     # use this line to modify the game_map global variable in the function
     global game_map
-    # TODO : complete this function (you can get inspired by remove_gum_from_map)
-    # You will need the two parameters of the function
-    # current_position is PACMAN's current position in the map
-    # next_position is PACMAN's next position (after move)
 
     # convert the map into a list (so that we can change a character !)
     game_map_list = list(game_map)
@@ -136,6 +131,14 @@ def begin_of_the_program():
     if AgeOfThePlayer < 12:
         exit("Vous etes trop jeune.")
 
+
+def end_of_the_program():
+    global count_gum
+    if count_gum <= 1:
+        print("Vous avez attraper", count_gum, "gomme")
+    else:
+        print("Vous avez attraper", count_gum, "gommes")
+
 # Program starts here !
 if __name__ == "__main__":
     begin_of_the_program()
@@ -143,6 +146,7 @@ if __name__ == "__main__":
     # Inital positions of PACMAN and ennemy
     pacman_position = [1, 1]
     enemy_position = [6, 4]
+    count_gum = 0
 
     while True:
         # Display the game map (this is what "slow refresh game' implies)
@@ -182,6 +186,7 @@ if __name__ == "__main__":
             # update PACMAN position
             move_pacman(pacman_position, next_position)
             pacman_position = list(next_position)
+            count_gum += 1
         elif case == SUPERGUM:
             # TODO Deal with SUPERGUM effect
             print(pink_text('You are now invincible'))
@@ -198,6 +203,7 @@ if __name__ == "__main__":
         else:
             print(debug_text('Something went wrong !!'))
 
+        end_of_the_program()
         # TODO Check is game is finished, in that case display some messages
 
         # TODO Make the ennemy move

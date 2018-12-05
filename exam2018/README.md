@@ -56,11 +56,11 @@ Avant de commencer les fonctionnalités modérées et avancés, vous **devez** i
 - ~~E3. Demander son age au joueur, si il a moins de 12 ans quitter, sinon continuer.~~
 - ~~E4. L'utilisateur peut quitter le jeu en tapant 'q' ou 'Q' comme déplacement.~~
 - ~~E5. Vérifier, dans la fonction 'get_case_content' que la position donnée ne sort pas du niveau, si cela sort, retourner `None`.~~
-- ~~E6. Compléter la fonction `move_pacman` de sorte que PACMAN se déplace vraiment.
-  * INDICE => Cette fonction est très similaire à la fonction  `remove_gum_from_map`~~
-- E7. Afficher le nombre de pac-gomme mangées en fin de jeu.
+- ~~E6. Compléter la fonction `move_pacman` de sorte que PACMAN se déplace vraiment.~~
+  * INDICE => Cette fonction est très similaire à la fonction  `remove_gum_from_map`
+- ~~E7. Afficher le nombre de pac-gomme mangées en fin de jeu.~~
 - E8. Implémenter la fin "PACMAN gagne" 
-  * INDICE => Compter le nomb~~~~re de '.' dans le niveau, si PACMAN a mangé ce nombre de pac-gomme il a gagné !
+  * INDICE => Compter le nombre de '.' dans le niveau, si PACMAN a mangé ce nombre de pac-gomme il a gagné !
 - E9. Quand PACMAN mange une super-gomme, il devient invincible et il peut manger les ennemis.
   * INDICE => C'est très similaire à quand PACMAN mange les pac-gommes !
 - E10. Afficher le nombre d'ennemi mangés en fin de partie.
@@ -85,7 +85,7 @@ Avant de commencer les fonctionnalités modérées et avancés, vous **devez** i
 - A2. _valable uniquement si M3 et A1 fait_ Gérer plusieurs ennemis (paramétrable)
   * INDICE => la position de l'ennemi va devenir une liste de positions des différents ennemis
 - A3. Le(s) ennemi(s) se rapproche de PACMAN quand il(s) se déplace(nt) (laisser la fonction de M3 en commentaire dans votre code)
-  * INDICE => Pour chaque ennemi prenez la direction qui minimize la distance avec PACMAN !
+  * INDICE => Pour chaque ennemi prenez la direction qui minimise la distance avec PACMAN !
 - A4. _votre fonctionnalité ici_
 
 # CONSEILS
